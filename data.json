@@ -1,0 +1,26 @@
+{
+  "5178353118": {
+    "blocks": {
+      "fruits": [
+        {
+          "word": "apple",
+          "translation": "яблоко",
+          "stage": 0,
+          "next_review": null
+        },
+        {
+          "word": "pineapple",
+          "translation": "ананас",
+          "stage": 0,
+          "next_review": null
+        },
+        {
+          "word": "melon",
+          "translation": "дыня",
+          "stage": 0,
+          "next_review": null
+        }
+      ]
+    }
+  }
+}
