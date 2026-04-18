@@ -1,4 +1,5 @@
 import json
+import os
 from pathlib import Path
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import (
@@ -20,7 +21,7 @@ INTERVALS = [
     30 * 24 * 60 * 60  
 ]
 
-TOKEN = "8273652392:AAE7t3PCzp6j4RWd107q4Ha-W_QRU94l5R0"
+TOKEN = os.getenv("TOKEN")
 DATA_FILE = Path("data.json")
 
 
