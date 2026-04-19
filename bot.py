@@ -46,6 +46,24 @@ def get_user(user_id):
     return data[user_id]
 
 
+async def check_reviews(context: ContextTypes.DEFAULT_TYPE):
+    now = int(time.time())
+
+    for user_id, user_data in data.items():
+        for block_name, words in user_data["blocks"].items():
+
+            due_words = [w for w in words if w["next_review"] <= now]
+
+            if due_words:
+                try:
+                    await context.bot.send_message(
+                        chat_id=int(user_id),
+                        text=f"⏰ Пора повторить слова из блока: {block_name}"
+                    )
+                except:
+                    pass
+
+
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
@@ -255,6 +273,9 @@ def main():
     app.add_handler(CommandHandler("study", study))
 
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+
+    job_queue = app.job_queue
+    job_queue.run_repeating(check_reviews, interval=60, first=10)
 
     print("Бот запущен")
     app.run_polling()
