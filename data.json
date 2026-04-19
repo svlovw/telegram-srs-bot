@@ -6,19 +6,19 @@
           "word": "apple",
           "translation": "яблоко",
           "stage": 0,
-          "next_review": null
+          "next_review": 0
         },
         {
           "word": "pineapple",
           "translation": "ананас",
           "stage": 0,
-          "next_review": null
+          "next_review": 0
         },
         {
           "word": "melon",
           "translation": "дыня",
           "stage": 0,
-          "next_review": null
+          "next_review": 0
         }
       ]
     }

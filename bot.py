@@ -52,7 +52,7 @@ async def check_reviews(context: ContextTypes.DEFAULT_TYPE):
     for user_id, user_data in data.items():
         for block_name, words in user_data["blocks"].items():
 
-            due_words = [w for w in words if w["next_review"] <= now]
+            due_words = [w for w in words if w.get("next_review") and w["next_review"] <= now]
 
             if due_words:
                 try:
@@ -130,7 +130,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         now = int(time.time())
 
         words = user["blocks"][block]
-        due_words = [w for w in words if w["next_review"] <= now]
+        due_words = [w for w in words if w.get("next_review") and w["next_review"] <= now]
 
         if not due_words:
             await update.message.reply_text("😴 Пока нет слов для повторения")
